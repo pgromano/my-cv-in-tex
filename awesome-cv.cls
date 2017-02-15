@@ -202,9 +202,48 @@
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+
+% For elements of point
+\newcommand*{\pointtitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\scshape\color{darktext} #1}}
+\newcommand*{\pointpositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\pointdatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\pointlocationstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+
+% For elements of research
+\newcommand*{\researchpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\scshape\color{darktext} #1}}
+\newcommand*{\researchpersonstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\researchlabstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\researchdatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\researchlocationstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+
+% For elements of publication
+\newcommand*{\publicauthorsstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\color{darktext} #1}}
+\newcommand*{\publictitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\publicjournalstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\publicdatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+
+% For elements of presentation
+\newcommand*{\presentauthorsstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{darktext} #1}}
+\newcommand*{\presenteventstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\presentlocationstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\presentdatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+
+% For elements of open source software
+\newcommand*{\ossprojectstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{darktext} #1}}
+\newcommand*{\ossdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\ossurlstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+
+% For elements of teachings
+\newcommand*{\teachclassstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\scshape\color{darktext} #1}}
+\newcommand*{\teachdescriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\teachdatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+
+% For elements of teachings
+\newcommand*{\mentornamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\scshape\color{darktext} #1}}
+\newcommand*{\mentordescriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\mentordatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -577,6 +616,112 @@
   \end{tabular*}%
 }
 
+% Define an environment for cvpoint
+\newenvironment{cvpoints}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an point of cv information
+% Usage: \cventry{<institute>}{<degree>}{<location>}{<date>}
+\newcommand*{\cvpoint}[4]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\pointpositionstyle{#1} & \pointdatestyle{#4} \\}
+      {\pointtitlestyle{#2} & \pointlocationstyle{#3} \\
+      \pointpositionstyle{#1} & \pointdatestyle{#4} \\}
+  \end{tabular*}%
+}
+
+
+% Define an environment for cvpoint
+\newenvironment{cvresearching}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an point of cv information
+% Usage: \cventry{<institute>}{<degree>}{<location>}{<date>}
+\newcommand*{\cvresearch}[5]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\researchpositionstyle{#1} \researchpersonstyle{#2} \ & \researchdatestyle{#4} \\}
+      {\researchpositionstyle{#1} \researchpersonstyle{#2} & \researchlocationstyle{#4} \\
+      \researchlabstyle{#3} & \researchdatestyle{#5} \\}
+  \end{tabular*}%
+}
+
+
+% Define an environment for cvpublication
+\newenvironment{cvpublications}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \cventry{<authors>}{<title>}{<journal>}{<date>}
+\newcommand*{\cvpublication}[4]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\publicauthorsstyle{#1} & \publicdatestyle{#4} \\}
+      {\publicauthorsstyle{#1} & \publicjournalstyle{#3} \\
+       \publictitlestyle{#2} & \publicdatestyle{#4}\\}
+  \end{tabular*}%
+}
+
+% Define an environment for cvpublication
+\newenvironment{cvpresentations}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \cventry{<authors>}{<title>}{<event>}{<date>}
+\newcommand*{\cvpresentation}[4]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\presentauthorsstyle{#1} & \presentdatestyle{#4} \\}
+      {\presentauthorsstyle{#1} & \presentlocationstyle{#3} \\
+       \presenteventstyle{#2} & \presentdatestyle{#4}\\}
+  \end{tabular*}%
+}
+
+
+% Define an environment for cvpublication
+\newenvironment{cvossoftware}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{left}
+}{%
+  \end{left}
+}
+% Define an entry of cv information
+% Usage: \cventry{<authors>}{<title>}{<event>}{<date>}
+\newcommand*{\cvoss}[3]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \ossprojectstyle{#1} \\
+  \ossdescriptionstyle{#2} \\
+  \ossurlstyle{#3} \\
+  \vspace{-4.0mm}
+}
+
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
   \begin{center}
@@ -648,6 +793,48 @@
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
+}
+
+
+% Define an environment for cvpublication
+\newenvironment{cvteaching}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \cventry{<authors>}{<title>}{<journal>}{<date>}
+\newcommand*{\cvteach}[3]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\teachclassstyle{#1} & \teachdatestyle{#3}}
+      {\teachclassstyle{#1} & \teachdatestyle{#3} \\
+       \teachdescriptionstyle{#2}}
+  \end{tabular*}%
+}
+
+% Define an environment for cvpublication
+\newenvironment{cvmentoring}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \end{center}
+}
+% Define an entry of cv information
+% Usage: \cventry{<authors>}{<title>}{<journal>}{<date>}
+\newcommand*{\cvmentor}[3]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\mentornamestyle{#1} & \mentordatestyle{#3}}
+      {\mentornamestyle{#1} \teachdescriptionstyle{#2} & \mentordatestyle{#3}}
+  \end{tabular*}%
 }
 
 
